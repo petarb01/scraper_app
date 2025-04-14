@@ -1,0 +1,822 @@
+[
+  {
+    "title": "MAPLE SPICE 2 x 0,7 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/maple-spice-2-x-07-l/"
+  },
+  {
+    "title": "BATIDA DE COCO 0,70 L",
+    "price": "18,60€",
+    "link": "https://www.cugaklik.hr/proizvod/batida-de-coco-070-l/"
+  },
+  {
+    "title": "MONIN LIQUEUR VANILLA / VANILIJA 0,70 L",
+    "price": "28,50€",
+    "link": "https://www.cugaklik.hr/proizvod/vanilla-vanilija-070-l-2/"
+  },
+  {
+    "title": "MONIN LIQUEUR TRIPLE SEC CURACAO / NARANČA 0,70 L",
+    "price": "28,50€",
+    "link": "https://www.cugaklik.hr/proizvod/triple-sec-curacao-naranca-070-l-2/"
+  },
+  {
+    "title": "MONIN LIQUEUR WATERMELON / LUBENICA 0,70 L",
+    "price": "28,50€",
+    "link": "https://www.cugaklik.hr/proizvod/watermelon-lubenica-070-l-2/"
+  },
+  {
+    "title": "MONIN LIQUEUR YELLOW BANANA / ŽUTA BANANA 0,70 L",
+    "price": "27,50€",
+    "link": "https://www.cugaklik.hr/proizvod/yellow-banana-zuta-banana-070-l-2/"
+  },
+  {
+    "title": "MONIN LIQUEUR GREEN APPLE / ZELENA JABUKA 0,70 L",
+    "price": "26,50€",
+    "link": "https://www.cugaklik.hr/proizvod/green-apple-zelena-jabuka070-l/"
+  },
+  {
+    "title": "MONIN LIQUEUR PEACH / BRESKVA 0,70 L",
+    "price": "27,50€",
+    "link": "https://www.cugaklik.hr/proizvod/peach-breskva-070-l-2/"
+  },
+  {
+    "title": "MONIN LIQUEUR STRAWBERRY / JAGODA 0,70 L",
+    "price": "26,50€",
+    "link": "https://www.cugaklik.hr/proizvod/strawberry-jagoda-070-l-2/"
+  },
+  {
+    "title": "MONIN LIQUEUR EARL GREY 0,70 L",
+    "price": "29,50€",
+    "link": "https://www.cugaklik.hr/proizvod/earl-grey-070-l/"
+  },
+  {
+    "title": "MONIN LIQUEUR ELDERFLOWER/ BAZGA 0,70 L",
+    "price": "29,50€",
+    "link": "https://www.cugaklik.hr/proizvod/elderflower-bazga-070-l-2/"
+  },
+  {
+    "title": "MONIN LIQUEUR BLUE CURACAO 0,70 L",
+    "price": "28,50€",
+    "link": "https://www.cugaklik.hr/proizvod/blue-curacao-070-l/"
+  },
+  {
+    "title": "MONIN LIQUEUR BLACKCURRANT / CRNI RIBIZL 0,70 L",
+    "price": "32,50€",
+    "link": "https://www.cugaklik.hr/proizvod/blackcurrant-crni-ribizl-070-l/"
+  },
+  {
+    "title": "MONIN LIQUEUR COCONUT /KOKOS 0,70 L",
+    "price": "26,50€",
+    "link": "https://www.cugaklik.hr/proizvod/coconut-kokos-070-l-2/"
+  },
+  {
+    "title": "MONIN LIQUEUR CHERRY / VIŠNJA 0,70 L",
+    "price": "28,50€",
+    "link": "https://www.cugaklik.hr/proizvod/cherry-visnja-070-l/"
+  },
+  {
+    "title": "MONIN LIQUEUR COFFEE / KAVA 0,70 L",
+    "price": "29,50€",
+    "link": "https://www.cugaklik.hr/proizvod/coffee-kava-070-l/"
+  },
+  {
+    "title": "MONIN SAUCE DARK CHOCOLATE / CRNA ČOKOLADA 3 x 0,50 L",
+    "price": "43,50€",
+    "link": "https://www.cugaklik.hr/proizvod/dark-chocolate-crna-cokolada-050-l/"
+  },
+  {
+    "title": "MONIN LIQUEUR AMARETTO 0,70 L",
+    "price": "30,50€",
+    "link": "https://www.cugaklik.hr/proizvod/amaretto-070-l/"
+  },
+  {
+    "title": "MONIN LIQUEUR APRICOT / MARELICA 0,70 L",
+    "price": "30,50€",
+    "link": "https://www.cugaklik.hr/proizvod/apricot-marelica-070-l/"
+  },
+  {
+    "title": "MONIN LE FRAPPE CHOCOLATE 1,36 KG",
+    "price": "47,50€",
+    "link": "https://www.cugaklik.hr/proizvod/le-frappe-chocolate-136-kg/"
+  },
+  {
+    "title": "MONIN LE FRAPPE COFFEE 1,36 KG",
+    "price": "45,50€",
+    "link": "https://www.cugaklik.hr/proizvod/le-frappe-coffee-136-kg/"
+  },
+  {
+    "title": "FRUIT DE MONIN BRESKVA 1,00 L",
+    "price": "29,90€",
+    "link": "https://www.cugaklik.hr/proizvod/fruit-de-monin-breskva-100-l/"
+  },
+  {
+    "title": "FRUIT DE MONIN MALINA 1,00 L",
+    "price": "33,90€",
+    "link": "https://www.cugaklik.hr/proizvod/fruit-de-monin-malina-100-l/"
+  },
+  {
+    "title": "FRUIT DE MONIN MARAKUJA 1,00 L",
+    "price": "31,20€",
+    "link": "https://www.cugaklik.hr/proizvod/fruit-de-monin-marakuja-100-l/"
+  },
+  {
+    "title": "FRUIT DE MONIN BOROVNICA 1,0 L",
+    "price": "33,40€",
+    "link": "https://www.cugaklik.hr/proizvod/fruit-de-monin-borovnica-10-l/"
+  },
+  {
+    "title": "FRUIT DE MONIN TREŠNJA 1,00 L",
+    "price": "31,40€",
+    "link": "https://www.cugaklik.hr/proizvod/fruit-de-monin-tresnja-100-l/"
+  },
+  {
+    "title": "FRUIT DE MONIN YUZU (GREJP/LIMUN/MANDARINA) 1,00 L",
+    "price": "32,50€",
+    "link": "https://www.cugaklik.hr/proizvod/fruit-de-monin-yuzu-grejp-limun-mandarina-100-l/"
+  },
+  {
+    "title": "FRUIT DE MONIN MARAKUJA 1,00 L",
+    "price": "31,20€",
+    "link": "https://www.cugaklik.hr/proizvod/fruit-de-monin-marakuja-100-l/"
+  },
+  {
+    "title": "FRUIT DE MONIN BOROVNICA 1,0 L",
+    "price": "33,40€",
+    "link": "https://www.cugaklik.hr/proizvod/fruit-de-monin-borovnica-10-l/"
+  },
+  {
+    "title": "FRUIT DE MONIN KOKOS 1,00 L",
+    "price": "34,20€",
+    "link": "https://www.cugaklik.hr/proizvod/fruit-de-monin-kokos-100-l/"
+  },
+  {
+    "title": "FRUIT DE MONIN ANANAS 1,00 L",
+    "price": "29,90€",
+    "link": "https://www.cugaklik.hr/proizvod/fruit-de-monin-ananas-100-l/"
+  },
+  {
+    "title": "FRUIT DE MONIN BANANA 1,00 L",
+    "price": "28,90€",
+    "link": "https://www.cugaklik.hr/proizvod/fruit-de-monin-banana-100-l/"
+  },
+  {
+    "title": "FRUIT DE MONIN JAGODA 1,00 L",
+    "price": "29,60€",
+    "link": "https://www.cugaklik.hr/proizvod/fruit-de-monin-jagoda-100-l/"
+  },
+  {
+    "title": "FRUIT DE MONIN MANGO 1,00 L",
+    "price": "33,20€",
+    "link": "https://www.cugaklik.hr/proizvod/fruit-de-monin-mango-100-l/"
+  },
+  {
+    "title": "MONIN SYRUP CHOCO / ČOKOLADA 2 x 1,00 L",
+    "price": "33,00€",
+    "link": "https://www.cugaklik.hr/proizvod/choco-cokolada-100-l/"
+  },
+  {
+    "title": "MONIN SYRUP CARAMEL / KARAMELA 2 x 1,00 L",
+    "price": "33,00€",
+    "link": "https://www.cugaklik.hr/proizvod/caramel-karamela-100-l/"
+  },
+  {
+    "title": "MONIN SYRUP PEACH TEA / BRESKVA ČAJ 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/peach-tea-breskva-caj-070l/"
+  },
+  {
+    "title": "MONIN SYRUP RASPBERRY TEA/ MALINA ČAJ 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/raspberry-tea-malina-caj-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP SWEET & SOUR 2 x 1,0 L",
+    "price": "34,00€",
+    "link": "https://www.cugaklik.hr/proizvod/sweet-sour-100-l/"
+  },
+  {
+    "title": "MONIN SYRUP AMARETTO 2 x 1,0 L",
+    "price": "33,00€",
+    "link": "https://www.cugaklik.hr/proizvod/amaretto-100-l/"
+  },
+  {
+    "title": "MONIN SYRUP PISTACHE / PISTACIO 2 x 0,70 L",
+    "price": "35,00€",
+    "link": "https://www.cugaklik.hr/proizvod/pistache-pistacio-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP WINTER SPICE / ZIMSKI OKUS 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/winter-spice-zimski-okus-070l/"
+  },
+  {
+    "title": "MONIN SYRUP GREEN TEA / ZELENI ČAJ 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/green-tea-zeleni-caj-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP LEMON TEA / LIMUN ČAJ 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/lemon-tea-limun-caj-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP TRIPLE SEC CURACAO / NARANČA 2 X 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/triple-sec-curacao-naranca-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP VANILLA / VANILIJA 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/vanilla-vanilija-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP WATERMELON / LUBENICA 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/watermelon-lubenica-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP YELLOW BANANA / ŽUTA BANANA2 x 0,70 L",
+    "price": "35,00€",
+    "link": "https://www.cugaklik.hr/proizvod/yellow-banana-zuta-banana-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP RANTCHO LIME / LIMETA BEZ ŠEĆERA 2 x 0,70 L",
+    "price": "31,00€",
+    "link": "https://www.cugaklik.hr/proizvod/rantcho-lime-limeta-bez-secera-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP ROASTED HAZELNUT / PRŽENI LJEŠNJAK 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/roasted-hazelnut-przeni-ljesnjak-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP ROSE / RUŽA 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/rose-ruza-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP SALTED CARAMEL / KARAMELA SA DODATKOM SOLI 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/salted-caramel-karamela-sa-dodatkom-soli-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP SPICY MANGO 2 x 0,70 L",
+    "price": "38,50€",
+    "link": "https://www.cugaklik.hr/proizvod/spicy-mango-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP STRAWBERRY /JAGODA 2 x 0,70 L",
+    "price": "35,60€",
+    "link": "https://www.cugaklik.hr/proizvod/strawberry-jagoda-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP SPICY MANGO 2 x 0,70 L",
+    "price": "38,50€",
+    "link": "https://www.cugaklik.hr/proizvod/spicy-mango-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP STRAWBERRY /JAGODA 2 x 0,70 L",
+    "price": "35,60€",
+    "link": "https://www.cugaklik.hr/proizvod/strawberry-jagoda-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP PEACH / BRESKVA 2 x 0,70 L",
+    "price": "35,00€",
+    "link": "https://www.cugaklik.hr/proizvod/peach-breskva-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP PASSION FRUIT / MARAKUJA 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/passion-fruit-marakuja-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP PINK GRAPEFRUIT / RUŽIČASTI GREJP 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/pink-grapefruit-ruzicasti-grejp-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP MOJITO MINT 2 x 0,70 L",
+    "price": "38,00€",
+    "link": "https://www.cugaklik.hr/proizvod/mojito-mint-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP POPCORN / KOKICE 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/popcorn-kokice-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP HAZELNUT / LJEŠNJAK 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/hazelnut-ljesnjak-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP HIBISCUS / HIBISKUS 2 x 0,70 L",
+    "price": "39,00€",
+    "link": "https://www.cugaklik.hr/proizvod/hibiscus-hibiskus-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP LEMONGRASS / LIMUNSKA TRAVA 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/lemongrass-limunska-trava-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP MOJITO MINT 2 x 0,70 L",
+    "price": "38,00€",
+    "link": "https://www.cugaklik.hr/proizvod/mojito-mint-070-l/"
+  },
+  {
+    "title": "MONIN CARAMEL / KARAMELA 0,70 L x 2",
+    "price": "35,00€",
+    "link": "https://www.cugaklik.hr/proizvod/caramel-karamela-070-l/"
+  },
+  {
+    "title": "MONIN CUCUMBER / KRASTAVAC 2 X 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/cucumber-krastavac-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP ELDERFLOWER/ BAZGA 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/elderflower-bazga-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP FALERNUM / LIMETA,BADEM I ZAČINI 2 x 0,70 L",
+    "price": "38,00€",
+    "link": "https://www.cugaklik.hr/proizvod/falernum-limetabadem-i-zacini-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP GINGERBREAD 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/gingerbread-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP GINGER / ĐUMBIR 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/ginger-dumbir-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP GRENADINE 2 x 0,70 L",
+    "price": "33,00€",
+    "link": "https://www.cugaklik.hr/proizvod/grenadine-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP WHITE CHOCOLATE / BIJELA ČOKOLADA 2 x 0,70 L",
+    "price": "35,00€",
+    "link": "https://www.cugaklik.hr/proizvod/white-chocolate-bijela-cokolada-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP CINAMON / CIMET 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/cinamon-cimet-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP CORDIAL LIME JUICE / LIMETA 2 x 0,70 L",
+    "price": "31,00€",
+    "link": "https://www.cugaklik.hr/proizvod/cordial-lime-juice-limeta-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP COCONUT / KOKOS 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/coconut-kokos-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP CHOCOLATE CHIP COOKIE / ČOKOLADNI KOLAČIĆI 2 x 0,70 L",
+    "price": "39,00€",
+    "link": "https://www.cugaklik.hr/proizvod/chocolate-chip-cookie-cokoladni-kolacici-070l/"
+  },
+  {
+    "title": "MONIN SYRUP CHOCOLATE / ČOKOLADA 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/chocolate-cokolada-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP CURACAO BLUE 2 x 0,70 L",
+    "price": "35,00€",
+    "link": "https://www.cugaklik.hr/proizvod/curacao-blue-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP BLACKBERRY / KUPINA 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/blackberry-kupina-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP BERGAMOT 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/bergamot-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP APPLE PIE / PITA OD JABUKE 2 x 0,70 L",
+    "price": "37,20€",
+    "link": "https://www.cugaklik.hr/proizvod/apple-pie-pita-od-jabuke-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP AGAVA 0,70 L",
+    "price": "28,40€",
+    "link": "https://www.cugaklik.hr/proizvod/agava-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP ALMOND / BADEM 2 x 0,70 L",
+    "price": "35,00€",
+    "link": "https://www.cugaklik.hr/proizvod/almond-badem-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP AMARETO 2 x 0,70 L",
+    "price": "37,00€",
+    "link": "https://www.cugaklik.hr/proizvod/amareto-070-l/"
+  },
+  {
+    "title": "MONIN SYRUP PASSION FRUIT / MARAKUJA 2 x 0,25 L",
+    "price": "29,00€",
+    "link": "https://www.cugaklik.hr/proizvod/passion-fruit-marakuja-025-l/"
+  },
+  {
+    "title": "MONIN SYRUP CORDIAL LIME JUICE / LIMETA 2 x 0,25 L",
+    "price": "27,00€",
+    "link": "https://www.cugaklik.hr/proizvod/cordial-lime-juice-limeta-025-l/"
+  },
+  {
+    "title": "MONIN SYRUP MOJITO MINT 2 x 0,25 L",
+    "price": "29,00€",
+    "link": "https://www.cugaklik.hr/proizvod/mojito-mint-025-l/"
+  },
+  {
+    "title": "MONIN SYRUP ELDERFLOWER/ BAZGA 2 x 0,25 L",
+    "price": "27,00€",
+    "link": "https://www.cugaklik.hr/proizvod/elderflower-bazga-025-l/"
+  },
+  {
+    "title": "MONIN SYRUP GRENADINE 2 x 0,25 L",
+    "price": "27,20€",
+    "link": "https://www.cugaklik.hr/proizvod/grenadine-025-l/"
+  },
+  {
+    "title": "MARIE BRIZARD COCONUT SIRUP 0,70 L X 2 BOCE",
+    "price": "26,50€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-coconut-sirup-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD STRAWBERRY (JAGODA) SIRUP 0,70 L X 2 BOCE",
+    "price": "23,80€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-strawberry-jagoda-sirup-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD ALMOND (BADEM) SIRUP 0,70 L X 2 BOCE",
+    "price": "26,50€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-almond-badem-sirup-070-l/"
+  },
+  {
+    "title": "ERASMUS BOND TONIC CLASSIC 24 X 0,20 L",
+    "price": "55,80€",
+    "link": "https://www.cugaklik.hr/proizvod/erasmus-bond-tonic-classic-020-l/"
+  },
+  {
+    "title": "ERASMUS BOND TONIC 24 X DRY 0,20 L",
+    "price": "55,80€",
+    "link": "https://www.cugaklik.hr/proizvod/erasmus-bond-tonic-dry-020-l/"
+  },
+  {
+    "title": "ERASMUS BOND TONIC BOTANICAL 24 X 0,20 L",
+    "price": "55,80€",
+    "link": "https://www.cugaklik.hr/proizvod/erasmus-bond-tonic-botanical-020-l/"
+  },
+  {
+    "title": "MARIE BRIZARD CACAO BRUN (OOKOLADA) 0,70 L",
+    "price": "19,20€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-cacao-brun-ookolada-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD SPICY MIX 0,70 L",
+    "price": "19,20€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-spicy-mix-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD ANISETTE 0,70 L",
+    "price": "20,70€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-anisette-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD SPICY MIX 0,70 L",
+    "price": "19,20€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-spicy-mix-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD ANISETTE 0,70 L",
+    "price": "20,70€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-anisette-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD GRAND ORANGE 0,70 L",
+    "price": "29,20€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-grand-orange-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD LIME JUICE (LIMUN/LIMETA) SIRUP 0,70 L X 2",
+    "price": "23,80€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-lime-juice-limun-limeta-sirup-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD GRENADINE SIRUP 0,70 L X 2",
+    "price": "23,80€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-grenadine-sirup-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD FLEUR DE SUREAU (BAZGA) 0,70 L",
+    "price": "19,10€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-fleur-de-sureau-bazga-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD BLACKCURRANT (CRNI RIBIZ) 0,70 L",
+    "price": "19,10€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-blackcurrant-crni-ribiz-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD FRAISE (JAGODA) 0,70 L",
+    "price": "19,10€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-fraise-jagoda-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD LUBENICA 0,70 L",
+    "price": "19,10€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-lubenica-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD MANZANITA (ZELENA JABUKA) 0,70 L",
+    "price": "18,60€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-manzanita-zelena-jabuka-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD MENTHE VERTE (ZELENA MENTA) 0,70 L",
+    "price": "19,20€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-menthe-verte-zelena-menta-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD FLEUR DE SUREAU (BAZGA) 0,70 L",
+    "price": "19,10€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-fleur-de-sureau-bazga-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD PECHE (BRESKVA) 0,70 L",
+    "price": "18,70€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-peche-breskva-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD TRIPLE SEC 0,70 L",
+    "price": "18,60€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-triple-sec-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD CURACAO BLUE 0,70 L",
+    "price": "18,60€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-curacao-blue-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD ABRICOT (MARELICA) 0,70 L",
+    "price": "18,60€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-abricot-marelica-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD BANANA 0,70 L",
+    "price": "18,60€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-banana-070-l/"
+  },
+  {
+    "title": "MARIE BRIZARD COCONUT 0,70 L",
+    "price": "18,60€",
+    "link": "https://www.cugaklik.hr/proizvod/marie-brizard-coconut-070-l/"
+  },
+  {
+    "title": "DK AMARETTO 0,70 L",
+    "price": "23,00€",
+    "link": "https://www.cugaklik.hr/proizvod/dk-amaretto-070-l/"
+  },
+  {
+    "title": "DK PINA COLADA 0,70 L",
+    "price": "18,60€",
+    "link": "https://www.cugaklik.hr/proizvod/dk-pina-colada-070-l/"
+  },
+  {
+    "title": "DK ORIGINAL PEACHTREE 0,70 L",
+    "price": "23,90€",
+    "link": "https://www.cugaklik.hr/proizvod/dk-original-peachtree-070-l/"
+  },
+  {
+    "title": "DK MELON 0,70 L",
+    "price": "22,00€",
+    "link": "https://www.cugaklik.hr/proizvod/dk-melon-070-l/"
+  },
+  {
+    "title": "DK GRENADINE SYRUP 0,70 L",
+    "price": "18,00€",
+    "link": "https://www.cugaklik.hr/proizvod/dk-grenadine-syrup-070-l/"
+  },
+  {
+    "title": "DK APRICOT BRANDY 0,70 L",
+    "price": "22,90€",
+    "link": "https://www.cugaklik.hr/proizvod/dk-apricot-brandy-070-l/"
+  },
+  {
+    "title": "DK CREME DE BANANES 0,70 L",
+    "price": "22,90€",
+    "link": "https://www.cugaklik.hr/proizvod/dk-creme-de-bananes-070-l/"
+  },
+  {
+    "title": "DK CURACAO BLUE 0,70 L",
+    "price": "22,90€",
+    "link": "https://www.cugaklik.hr/proizvod/dk-curacao-blue-070-l/"
+  },
+  {
+    "title": "DK TRIPLE SEC 0,70 L",
+    "price": "23,90€",
+    "link": "https://www.cugaklik.hr/proizvod/dk-triple-sec-070-l/"
+  },
+  {
+    "title": "BEEFEATER DRY GIN&TONIC RTD 12 X 0,25 L",
+    "price": "32,28€",
+    "link": "https://www.cugaklik.hr/proizvod/beefeater-dry-gintonic-rtd-025-l/"
+  },
+  {
+    "title": "BEEFEATER PINK GIN&TONIC RTD 12 X 0,25 L",
+    "price": "32,28€",
+    "link": "https://www.cugaklik.hr/proizvod/beefeater-pink-gintonic-rtd-025-l/"
+  },
+  {
+    "title": "NERO BOTTEGA LIKER 0,50 L",
+    "price": "23,20€",
+    "link": "https://www.cugaklik.hr/proizvod/nero-bottega-liker-050-l/"
+  },
+  {
+    "title": "LATTE MACCHIATO BOTTEGA LIKER 0,50 L",
+    "price": "23,20€",
+    "link": "https://www.cugaklik.hr/proizvod/latte-macchiato-bottega-liker-050-l/"
+  },
+  {
+    "title": "PISTACCHIO BOTTEGA LIKER 0,50 L",
+    "price": "23,50€",
+    "link": "https://www.cugaklik.hr/proizvod/pistacchio-bottega-lkier-050-l/"
+  },
+  {
+    "title": "LIMONCINO BOTTEGA 2 x 0,50 L",
+    "price": "26,00€",
+    "link": "https://www.cugaklik.hr/proizvod/limoncino-bottega-050-l/"
+  },
+  {
+    "title": "Gorbatschow RTD Moscow Mule 12 X 330 ml",
+    "price": "37,20€",
+    "link": "https://www.cugaklik.hr/proizvod/gorbatschow-rtd-moscow-mule-330-ml/"
+  },
+  {
+    "title": "Gorbatschow RTD Sex on the beach 12 X 330 ml",
+    "price": "38,40€",
+    "link": "https://www.cugaklik.hr/proizvod/gorbatschow-rtd-sex-on-the-beach-330-ml/"
+  },
+  {
+    "title": "THOMAS HENRY Pink Grapefruit 24 X 0,20 L",
+    "price": "60,00€",
+    "link": "https://www.cugaklik.hr/proizvod/thomas-henry-pink-grapefruit-020-l/"
+  },
+  {
+    "title": "THOMAS HENRY Tonic water 24 x 0,20L",
+    "price": "60,00€",
+    "link": "https://www.cugaklik.hr/proizvod/thomas-henry-tonic-water-020-l-4-pack/"
+  },
+  {
+    "title": "THOMAS HENRY Cherry Blossom Tonic 24 X 0,20L",
+    "price": "62,40€",
+    "link": "https://www.cugaklik.hr/proizvod/thomas-henry-cherry-blossom-tonic-020l/"
+  },
+  {
+    "title": "THOMAS HENRY Soda Water 24 X 0,20L",
+    "price": "60,00€",
+    "link": "https://www.cugaklik.hr/proizvod/thomas-henry-soda-water-020l/"
+  },
+  {
+    "title": "THOMAS HENRY Ginger Ale 24 X 0,20L",
+    "price": "60,00€",
+    "link": "https://www.cugaklik.hr/proizvod/thomas-henry-ginger-ale-020l/"
+  },
+  {
+    "title": "THOMAS HENRY Spicy Ginger 8 X 0,20L",
+    "price": "20,80€",
+    "link": "https://www.cugaklik.hr/proizvod/thomas-henry-spicy-ginger-020l/"
+  },
+  {
+    "title": "THOMAS HENRY Tonic water 24 X 0,20 L",
+    "price": "62,40€",
+    "link": "https://www.cugaklik.hr/proizvod/thomas-henry-tonic-water-020-l/"
+  },
+  {
+    "title": "THOMAS HENRY Mystic Mango 24 X 0,20L",
+    "price": "62,40€",
+    "link": "https://www.cugaklik.hr/proizvod/thomas-henry-mystic-mango-020l/"
+  },
+  {
+    "title": "GREENALL'S GIN & TONIC MIX - 5% 12 x 0,25 L",
+    "price": "34,80€",
+    "link": "https://www.cugaklik.hr/proizvod/greeenalls-gin-tonic-5-025-l/"
+  },
+  {
+    "title": "JIM BEAM COLA 4,5% 12 X 0,33 L",
+    "price": "36,00€",
+    "link": "https://www.cugaklik.hr/proizvod/jim-beam-cola-45-033-l/"
+  },
+  {
+    "title": "FENTIMANS ROSE LEMONADE 24 X 0,2 L",
+    "price": "51,00€",
+    "link": "https://www.cugaklik.hr/proizvod/fentimans-rose-lemonade-02-l/"
+  },
+  {
+    "title": "FENTIMANS CONNOISSEURS TONIC WATER 24 X 0,2 L",
+    "price": "51,00€",
+    "link": "https://www.cugaklik.hr/proizvod/fentimans-connoisseurs-tonic-water-02-l/"
+  },
+  {
+    "title": "FENTIMANS GINGER ALE 24 X 0,2 L",
+    "price": "51,00€",
+    "link": "https://www.cugaklik.hr/proizvod/fentimans-ginger-ale-02-l/"
+  },
+  {
+    "title": "FENTIMANS GINGER BEER 24 X 0,2 L",
+    "price": "51,00€",
+    "link": "https://www.cugaklik.hr/proizvod/fentimans-ginger-beer-02-l/"
+  },
+  {
+    "title": "FENTIMANS CURIOSITY COLA 12 X 0,275 L",
+    "price": "34,80€",
+    "link": "https://www.cugaklik.hr/proizvod/fentimans-curiosity-cola-0275-l/"
+  },
+  {
+    "title": "FENTIMANS ROSE LEMONADE 12 X 0,275 L",
+    "price": "34,80€",
+    "link": "https://www.cugaklik.hr/proizvod/fentimans-rose-lemonade-0275-l/"
+  },
+  {
+    "title": "FENTIMANS ENGLISH ELDERFLOWER 12 X 0,275 L",
+    "price": "34,80€",
+    "link": "https://www.cugaklik.hr/proizvod/fentimans-english-elderflower-0275-l/"
+  },
+  {
+    "title": "BOLS CREME DE CASSIS 0,70 L",
+    "price": "21,60€",
+    "link": "https://www.cugaklik.hr/proizvod/bols-creme-de-cassis-070-l/"
+  },
+  {
+    "title": "BOLS ELDERFLOWER 0,70 L",
+    "price": "21,60€",
+    "link": "https://www.cugaklik.hr/proizvod/bols-elderflower-070-l/"
+  },
+  {
+    "title": "BOLS AMARETTO 0,70 L",
+    "price": "21,60€",
+    "link": "https://www.cugaklik.hr/proizvod/bols-amaretto-070-l/"
+  },
+  {
+    "title": "BOLS APRICOT 0,70 L",
+    "price": "21,60€",
+    "link": "https://www.cugaklik.hr/proizvod/bols-apricot-070-l/"
+  },
+  {
+    "title": "BOLS BLUE CURACAO 0,70 L",
+    "price": "21,60€",
+    "link": "https://www.cugaklik.hr/proizvod/bols-blue-curacao-070-l/"
+  },
+  {
+    "title": "BOLS COCONUT 0,70 L",
+    "price": "21,60€",
+    "link": "https://www.cugaklik.hr/proizvod/bols-coconut-070-l/"
+  },
+  {
+    "title": "BOLS CAFFEE 0,70 L",
+    "price": "21,60€",
+    "link": "https://www.cugaklik.hr/proizvod/bols-caffee-070-l/"
+  },
+  {
+    "title": "BOLS CREME DE BANANE 0,70 L",
+    "price": "21,60€",
+    "link": "https://www.cugaklik.hr/proizvod/bols-creme-de-banane-070-l/"
+  },
+  {
+    "title": "BOLS TRIPLE SEC 0,70 L",
+    "price": "21,60€",
+    "link": "https://www.cugaklik.hr/proizvod/bols-triple-sec-070-l/"
+  },
+  {
+    "title": "BOLS WATERMELON 0,70 L",
+    "price": "21,60€",
+    "link": "https://www.cugaklik.hr/proizvod/bols-watermelon-070-l/"
+  },
+  {
+    "title": "BOLS PEACH 0,70 L",
+    "price": "21,60€",
+    "link": "https://www.cugaklik.hr/proizvod/bols-peach-070-l/"
+  },
+  {
+    "title": "BOLS WATERMELON 0,70 L",
+    "price": "21,60€",
+    "link": "https://www.cugaklik.hr/proizvod/bols-watermelon-070-l/"
+  },
+  {
+    "title": "BOLS PEACH 0,70 L",
+    "price": "21,60€",
+    "link": "https://www.cugaklik.hr/proizvod/bols-peach-070-l/"
+  }
+]
