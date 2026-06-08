@@ -1,0 +1,116 @@
+.search-page {
+  padding-top: 4.5rem; /* clear fixed navbar */
+  min-height: 100vh;
+  background: var(--bg-1);
+}
+
+.search-page__inner {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Re-entry search bar */
+.search-page__bar {
+  max-width: 680px;
+}
+
+/* Mobile filter toggle — hidden on desktop */
+.search-page__filter-toggle {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--bg-3);
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-md);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all var(--dur) var(--ease);
+}
+
+.search-page__filter-toggle:hover {
+  border-color: var(--border-gold);
+  color: var(--gold-400);
+}
+
+.search-page__filter-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: var(--r-full);
+  background: var(--gold-500);
+  color: #0d0f1e;
+  font-size: 0.6875rem;
+  font-weight: 800;
+}
+
+/* Layout: sidebar + main */
+.search-page__layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.search-page__main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* No-query prompt */
+.search-page__prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.search-page__prompt-icon {
+  font-size: 3rem;
+  opacity: 0.4;
+}
+
+.search-page__prompt p {
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .search-page__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .search-page__filter-toggle {
+    display: flex;
+  }
+
+  .search-page__sidebar {
+    display: none;
+  }
+
+  .search-page__sidebar--open {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .search-page__sidebar--open .filter-sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .search-page__bar {
+    max-width: 100%;
+  }
+}

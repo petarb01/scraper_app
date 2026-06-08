@@ -1,0 +1,29 @@
+.featured {
+  background: var(--bg-0);
+}
+
+.featured__grid {
+  display: grid;
+  /* minmax(280px) gives 3 cols on desktop, 2 on tablet, 1 on mobile — works well for 6 ProductCards */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+/* CTA */
+.featured__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.featured__cta .btn--ghost {
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .featured__grid {
+    grid-template-columns: 1fr;
+  }
+}

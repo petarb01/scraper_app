@@ -1,0 +1,256 @@
+{% extends "admin/base.html" %}
+{% block title %}History{% endblock %}
+
+{% block head %}
+<style>
+  /* ── Stats bar ── */
+  .stats-bar {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 20px;
+    min-width: 130px;
+    text-align: center;
+  }
+  .stat-num  { font-size: 1.6rem; font-weight: 700; line-height: 1; }
+  .stat-label { font-size: .78rem; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: .04em; }
+  .stat-pending    .stat-num { color: var(--primary); }
+  .stat-confirmed  .stat-num { color: var(--success); }
+  .stat-rejected   .stat-num { color: var(--danger);  }
+  .stat-superseded .stat-num { color: var(--warning);  }
+
+  /* ── History table ── */
+  .history-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .history-table th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: .78rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    border-bottom: 2px solid var(--border);
+    background: #f8f9fa;
+  }
+  .history-table td {
+    padding: 10px 12px;
+    font-size: .875rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .history-table tr:last-child td {
+    border-bottom: none;
+  }
+  .history-table tr:hover td {
+    background: #f8f9fa;
+  }
+
+  .stores-list { margin: 0; padding: 0; list-style: none; }
+  .stores-list li { margin-bottom: 2px; font-size: .83rem; }
+  .stores-list .src { font-weight: 600; color: var(--muted); display: inline-block; width: 100px; }
+  .stores-list a { color: var(--primary); text-decoration: none; }
+  .stores-list a:hover { text-decoration: underline; }
+
+  .notes-text {
+    font-size: .82rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .btn-undo {
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: var(--radius);
+    font: inherit;
+    font-size: .8rem;
+    cursor: pointer;
+    color: var(--text);
+  }
+  .btn-undo:hover { background: #f0f0f0; }
+  .btn-undo:disabled { opacity: .4; cursor: not-allowed; }
+
+  .empty-history {
+    text-align: center;
+    padding: 48px 0;
+    color: var(--muted);
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>History</h1>
+
+<!-- Counts summary -->
+<div class="stats-bar">
+  <div class="stat-card stat-pending">
+    <div class="stat-num">{{ counts.pending }}</div>
+    <div class="stat-label">Pending</div>
+  </div>
+  <div class="stat-card stat-confirmed">
+    <div class="stat-num">{{ counts.confirmed }}</div>
+    <div class="stat-label">Confirmed</div>
+  </div>
+  <div class="stat-card stat-rejected">
+    <div class="stat-num">{{ counts.rejected }}</div>
+    <div class="stat-label">Rejected</div>
+  </div>
+  <div class="stat-card stat-superseded">
+    <div class="stat-num">{{ counts.superseded }}</div>
+    <div class="stat-label">Superseded</div>
+  </div>
+</div>
+
+{% if rows %}
+<table class="history-table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Status</th>
+      <th>Source</th>
+      <th>Scores</th>
+      <th>Products</th>
+      <th>Reviewed</th>
+      <th>Notes</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in rows %}
+    <tr id="row-{{ row.id }}">
+      <!-- ID -->
+      <td style="color:var(--muted);font-size:.8rem;">{{ row.id }}</td>
+
+      <!-- Status badge -->
+      <td>
+        <span class="badge badge-{{ row.review_status }}">
+          {{ row.review_status | capitalize }}
+        </span>
+      </td>
+
+      <!-- Suggestion source -->
+      <td>
+        <span class="badge badge-{{ row.suggestion_source | replace('_','-') }}"
+              style="white-space:nowrap;">
+          {{ row.suggestion_source_label }}
+        </span>
+        {% if row.category %}
+          <div style="font-size:.78rem;color:var(--muted);margin-top:3px;">
+            {{ row.category }}{% if row.volume_ml %} · {{ row.volume_ml }} ml{% endif %}
+          </div>
+        {% endif %}
+      </td>
+
+      <!-- Scores -->
+      <td style="white-space:nowrap;">
+        {% if row.jaccard_score is not none %}
+          <span class="score-pill">J={{ "%.2f"|format(row.jaccard_score) }}</span>
+        {% endif %}
+        {% if row.trigram_score is not none %}
+          <br><span class="score-pill" style="margin-top:3px;">T={{ "%.2f"|format(row.trigram_score) }}</span>
+        {% endif %}
+      </td>
+
+      <!-- Product list -->
+      <td>
+        <ul class="stores-list">
+          {% for s in row.stores %}
+          <li>
+            <span class="src">{{ s.display_name }}</span>
+            {% if s.url %}
+              <a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.title | truncate(55) }}</a>
+            {% else %}
+              {{ s.title | truncate(55) }}
+            {% endif %}
+            {% if s.price and s.price > 0 %}
+              <span style="color:var(--muted);font-size:.78rem;">
+                €{{ "%.2f"|format(s.price) }}
+              </span>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </td>
+
+      <!-- Reviewed at -->
+      <td style="white-space:nowrap;font-size:.82rem;color:var(--muted);">
+        {% if row.reviewed_at %}
+          {{ row.reviewed_at[:10] }}<br>
+          <span style="font-size:.78rem;">{{ row.reviewed_at[11:16] }}</span>
+        {% else %}
+          —
+        {% endif %}
+      </td>
+
+      <!-- Notes -->
+      <td>
+        {% if row.reviewer_notes %}
+          <span class="notes-text">{{ row.reviewer_notes }}</span>
+        {% else %}
+          <span style="color:var(--muted);font-size:.8rem;">—</span>
+        {% endif %}
+      </td>
+
+      <!-- Undo button -->
+      <td>
+        <button class="btn-undo" onclick="undoRow({{ row.id }}, this)">Undo</button>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% else %}
+<div class="empty-history">
+  No reviewed candidates yet.
+  <a href="/admin/review" style="color:var(--primary);">Go to review queue →</a>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+async function undoRow(id, btn) {
+  if (!confirm('Reset this decision back to "pending"?')) return;
+  btn.disabled = true;
+
+  try {
+    const res  = await fetch(`/admin/api/undo/${id}`, { method: 'POST' });
+    const data = await res.json();
+
+    if (!data.success) {
+      showToast('Error: ' + (data.error || 'unknown'));
+      btn.disabled = false;
+      return;
+    }
+
+    // Fade out the row
+    const row = document.getElementById(`row-${id}`);
+    if (row) {
+      row.style.transition = 'opacity .3s';
+      row.style.opacity = '0';
+      setTimeout(() => row.remove(), 320);
+    }
+    showToast('Decision undone — item is pending again');
+
+  } catch (e) {
+    showToast('Network error');
+    btn.disabled = false;
+  }
+}
+</script>
+{% endblock %}

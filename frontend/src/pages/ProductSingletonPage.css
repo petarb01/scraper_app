@@ -1,0 +1,66 @@
+/* Single-store notice */
+.psp__notice {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.125rem;
+  border-radius: var(--r-md);
+  background: var(--bg-3);
+  border: 1px solid var(--border-default);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Store card */
+.psp__store-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  padding: 1.5rem;
+  border-radius: var(--r-lg);
+  background: var(--bg-2);
+  border: 1px solid var(--border-default);
+}
+
+.psp__store-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.psp__store-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.psp__price {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--gold-400);
+}
+
+.psp__product-title {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.psp__buy-btn {
+  align-self: flex-start;
+}
+
+/* Browse CTA */
+.psp__browse-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.psp__browse-text {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}

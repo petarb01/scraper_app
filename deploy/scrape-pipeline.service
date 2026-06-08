@@ -1,0 +1,18 @@
+[Unit]
+Description=Daily price scraper pipeline
+After=network-online.target docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+User=server
+Group=server
+WorkingDirectory=/home/server/Documents/diplomski/web_scraper
+ExecStart=/usr/local/bin/run_scrape_pipeline.sh
+StandardOutput=journal
+StandardError=journal
+# 2 hours max — 5 scrapers + import + matching
+TimeoutStartSec=7200
+
+[Install]
+WantedBy=multi-user.target

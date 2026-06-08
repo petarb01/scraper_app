@@ -1,0 +1,214 @@
+.pgp {
+  min-height: 100vh;
+  padding-top: 5rem;
+  background: var(--bg-1);
+}
+
+.pgp__container {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+/* Breadcrumb */
+.pgp__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-bottom: 2.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.pgp__crumb-link {
+  color: var(--text-muted);
+  transition: color var(--dur) var(--ease);
+}
+
+.pgp__crumb-link:hover {
+  color: var(--gold-400);
+}
+
+.pgp__crumb-sep {
+  color: var(--text-faint);
+}
+
+/* Two-column layout */
+.pgp__layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* ─── Left column ─────────────────────────────── */
+.pgp__image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--bg-3);
+  border: 1px solid var(--border-default);
+}
+
+.pgp__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 1.5rem;
+}
+
+.pgp__image-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pgp__image-icon {
+  font-size: 5rem;
+  line-height: 1;
+}
+
+.pgp__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.pgp__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: var(--r-full);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.pgp__tag--category {
+  background: var(--gold-glow);
+  color: var(--gold-400);
+  border: 1px solid var(--border-gold);
+}
+
+.pgp__tag--volume {
+  background: var(--bg-3);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+}
+
+/* ─── Right column ────────────────────────────── */
+.pgp__right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pgp__title {
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+
+.pgp__store-count {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+.pgp__store-count strong {
+  color: var(--text-primary);
+}
+
+/* Price row */
+.pgp__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pgp__price-label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.pgp__price-min {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: var(--gold-400);
+}
+
+.pgp__price-max {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Table section */
+.pgp__section-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.875rem;
+}
+
+.pgp__table-section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Savings banner */
+.pgp__savings {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--r-md);
+  background: rgba(232, 160, 32, 0.07);
+  border: 1px solid var(--border-gold);
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.pgp__savings-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.pgp__savings-amount {
+  color: var(--gold-400);
+}
+
+/* ─── Loading skeletons ───────────────────────── */
+.pgp__image-skeleton   { height: 320px; border-radius: var(--r-lg); }
+.pgp__tag-skeleton     { height: 28px; width: 100px; border-radius: var(--r-full); }
+.pgp__title-skeleton   { height: 48px; width: 70%; border-radius: var(--r-sm); }
+.pgp__subtitle-skeleton { height: 20px; width: 40%; border-radius: var(--r-sm); }
+.pgp__table-skeleton   { height: 200px; border-radius: var(--r-md); }
+
+/* ─── Responsive ──────────────────────────────── */
+@media (max-width: 860px) {
+  .pgp__layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .pgp__image-wrap {
+    max-width: 320px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .pgp__price-min {
+    font-size: 1.5rem;
+  }
+}

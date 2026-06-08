@@ -1,0 +1,13 @@
+[Unit]
+Description=Daily price scraper pipeline timer
+
+[Timer]
+# Fire at 3:00 AM every day
+OnCalendar=*-*-* 03:00:00
+# Catch up if the machine was off at fire time
+Persistent=true
+# Spread up to 5 min so it doesn't always fire at exactly :00
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target

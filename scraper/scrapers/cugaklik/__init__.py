@@ -2,36 +2,46 @@ import asyncio
 import time
 from cugaklik_scraper import cugaclick_scraper
 
-async def run_in_executor(func, *args):
-    loop = asyncio.get_event_loop()
-    return await loop.run_in_executor(None, func, *args)
+CATEGORIES = [
+    "zestoka-cuga/vodka",
+    "zestoka-cuga/rakija",
+    "zestoka-cuga/rum",
+    "zestoka-cuga/gin",
+    "zestoka-cuga/tequila",
+    "zestoka-cuga/bitter",
+    "zestoka-cuga/biljni-liker",
+    "zestoka-cuga/liker",
+    "zestoka-cuga/brandy",
+    "zestoka-cuga/cognac",
+    "whisky",
+    "kokteli-i-miksevi",
+    "vino",
+]
 
-# Main async function to run all scrapers in parallel
+MAX_CONCURRENT = 4
+
+async def run_with_semaphore(semaphore, name):
+    async with semaphore:
+        loop = asyncio.get_event_loop()
+        return await loop.run_in_executor(None, cugaclick_scraper, name)
+
 async def main():
     start_time = time.time()
-    print("[INFO] Starting parallel scraping with Selenium and asyncio...")
-    
-    # Create tasks for each scraper with their own driver
-    tasks = [
-        run_in_executor(lambda: cugaclick_scraper("zestoka-cuga")),
-        run_in_executor(lambda: cugaclick_scraper("whisky")),
-        run_in_executor(lambda: cugaclick_scraper("kokteli-i-miksevi")),
-        run_in_executor(lambda: cugaclick_scraper("vino")),
-    ]
-    
-    # Run all tasks concurrently and wait for them to complete
+    print(f"[INFO] Starting scraping ({MAX_CONCURRENT} browsers at a time)...")
+
+    semaphore = asyncio.Semaphore(MAX_CONCURRENT)
+    tasks = [run_with_semaphore(semaphore, name) for name in CATEGORIES]
     results = await asyncio.gather(*tasks, return_exceptions=True)
-    
-    # Process results
-    for result in results:
+
+    for name, result in zip(CATEGORIES, results):
         if isinstance(result, Exception):
-            print(f"[ERROR] A scraper failed with exception: {result}")
+            print(f"[ERROR] {name}: {result}")
         else:
-            print(f"[SUCCESS] Completed scraping {result}")
-    
+            print(f"[SUCCESS] {name}")
+
     elapsed_time = time.time() - start_time
     print(f"[INFO] All scraping completed in {elapsed_time:.2f} seconds")
-    
+
     return results
 
 if __name__ == "__main__":

@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 import json
 import time
 import sys
+import os
 
 def rotodinamic_scraper(name):
     try:
@@ -78,20 +79,23 @@ def rotodinamic_scraper(name):
             price_elem = item.select_one("span.price-new")
             if not (price_elem):
                 price_elem = item.select_one("div.price span")
+            size_elem = item.select_one("div.custom-fields-field-1")
             link_elem = item.select_one("a")
 
-
-            
-            
             if title_elem and price_elem:
                 title_text = title_elem.get_text(strip=True)
                 price_text = price_elem.get_text(strip=True)
+                size_text = size_elem.get_text(strip=True) if size_elem else None
                 link = link_elem["href"] if link_elem and "href" in link_elem.attrs else None
-                
+                img_elem = item.select_one("div.image img")
+                img_url = img_elem["src"] if img_elem and img_elem.get("src") else None
+
                 all_products.append({
                     "title": title_text,
                     "price": price_text,
-                    "link": link
+                    "size": size_text,
+                    "link": link,
+                    "image": img_url
                 })
             else:
                 print(f"[WARN] Product {idx + 1}: Missing title or price.")
@@ -117,17 +121,23 @@ def rotodinamic_scraper(name):
                     price_elem = item.select_one("span.price-new")
                     if not (price_elem):
                         price_elem = item.select_one("div.price span")
+                    size_elem = item.select_one("div.custom-fields-field-1")
                     link_elem = item.select_one("a")
 
                     if title_elem and price_elem:
                         title_text = title_elem.get_text(strip=True)
                         price_text = price_elem.get_text(strip=True)
+                        size_text = size_elem.get_text(strip=True) if size_elem else None
                         link = link_elem["href"] if link_elem and "href" in link_elem.attrs else None
+                        img_elem = item.select_one("div.image img")
+                        img_url = img_elem["src"] if img_elem and img_elem.get("src") else None
 
                         all_products.append({
                             "title": title_text,
                             "price": price_text,
-                            "link": link
+                            "size": size_text,
+                            "link": link,
+                            "image": img_url
                         })
                     else:
                         print(f"[WARN] Product {idx + 1} on page {current_page}: Missing title or price.")
@@ -156,7 +166,17 @@ def rotodinamic_scraper(name):
         driver.quit()
         print("[INFO] Browser closed.")
 
-        output_path = "../../data/rotodinamic/" + name + "_rotodinamic.json"
+        # Sanitize the name to avoid directory creation from slashes
+        safe_name = name.replace("/", "-")
+
+        # Make path relative to this script file, not the current working directory
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        output_path = os.path.join(script_dir, "../../data/rotodinamic", safe_name + "_rotodinamic.json")
+        output_path = os.path.normpath(output_path)  # Clean up the path
+
+        # Create directory if it doesn't exist
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
         print(f"[INFO] Saving {len(all_products)} products to {output_path}...")
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(all_products, f, ensure_ascii=False, indent=2)

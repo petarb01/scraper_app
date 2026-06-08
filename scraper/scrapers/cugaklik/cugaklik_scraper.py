@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 import json
 import time
 import sys
+import os
 
 def cugaclick_scraper(name):
     try:
@@ -60,11 +61,14 @@ def cugaclick_scraper(name):
                 title_text = title_elem.get_text(strip=True)
                 price_text = price_elem.get_text(strip=True)
                 link = link_elem["href"] if link_elem and "href" in link_elem.attrs else None
+                img_elem = item.select_one("div.c-product-card__image-wrapper img")
+                img_url = img_elem.get("src") or img_elem.get("data-src") if img_elem else None
 
                 all_products.append({
                     "title": title_text,
                     "price": price_text,
-                    "link": link
+                    "link": link,
+                    "image": img_url
                 })
             else:
                 print(f"[WARN] Product {idx + 1}: Missing title or price.")
@@ -110,11 +114,14 @@ def cugaclick_scraper(name):
                         title_text = title_elem.get_text(strip=True)
                         price_text = price_elem.get_text(strip=True)
                         link = link_elem["href"] if link_elem and "href" in link_elem.attrs else None
+                        img_elem = item.select_one("div.c-product-card__image-wrapper img")
+                        img_url = img_elem.get("src") or img_elem.get("data-src") if img_elem else None
 
                         all_products.append({
                             "title": title_text,
                             "price": price_text,
-                            "link": link
+                            "link": link,
+                            "image": img_url
                         })
                     else:
                         print(f"[WARN] Product {idx + 1} on page {current_page}: Missing title or price.")
@@ -127,7 +134,17 @@ def cugaclick_scraper(name):
         driver.quit()
         print("[INFO] Browser closed.")
 
-        output_path = "../../data/cugaklik/" + name + "_cugaklik.json"
+        # Sanitize the name to avoid directory creation from slashes
+        safe_name = name.replace("/", "-")
+
+        # Make path relative to this script file, not the current working directory
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        output_path = os.path.join(script_dir, "../../data/cugaklik", safe_name + "_cugaklik.json")
+        output_path = os.path.normpath(output_path)  # Clean up the path
+
+        # Create directory if it doesn't exist
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
         print(f"[INFO] Saving {len(all_products)} products to {output_path}...")
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(all_products, f, ensure_ascii=False, indent=2)

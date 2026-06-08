@@ -1,0 +1,18 @@
+# Install to: /etc/fail2ban/jail.local
+# Protects SSH from brute-force on the local network.
+# HTTP jails are skipped — nginx only sees 127.0.0.1 (cloudflared), not real IPs.
+
+[DEFAULT]
+bantime  = 1h
+findtime = 10m
+maxretry = 5
+# Send ban notifications to journald (visible via: journalctl -u fail2ban)
+action = %(action_)s
+
+[sshd]
+enabled  = true
+port     = ssh
+filter   = sshd
+backend  = systemd
+maxretry = 3
+bantime  = 6h

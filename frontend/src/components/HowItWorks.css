@@ -1,0 +1,172 @@
+/* ── How it works ── */
+.how {
+  background: var(--bg-2);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.how__steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  list-style: none;
+  position: relative;
+}
+
+/* Dashed connector between steps */
+.how__steps::before {
+  content: '';
+  position: absolute;
+  top: 3.5rem;
+  left: calc(16.67% + 2rem);
+  right: calc(16.67% + 2rem);
+  height: 1px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--border-gold) 0,
+    var(--border-gold) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+  pointer-events: none;
+}
+
+.how__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  padding: 2rem 1.5rem;
+  background: var(--bg-3);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.how__step:hover {
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-gold);
+}
+
+.how__step-number {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold-500);
+  text-transform: uppercase;
+}
+
+.how__step-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  padding: 1rem;
+  background: var(--bg-4);
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+}
+
+.how__step-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.how__step-desc {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ── Stores banner ── */
+.stores {
+  background: var(--bg-1);
+}
+
+.stores__accent {
+  color: var(--gold-400);
+}
+
+.stores__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  list-style: none;
+}
+
+.store-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.5rem;
+  background: var(--bg-3);
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-full);
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.store-chip:hover {
+  border-color: var(--border-gold);
+  background: var(--bg-4);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}
+
+.store-chip__icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.store-chip__name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.store-chip:hover .store-chip__name {
+  color: var(--gold-400);
+}
+
+.store-chip__arrow {
+  color: var(--text-faint);
+  opacity: 0;
+  margin-left: 0.125rem;
+  transition: opacity var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.store-chip:hover .store-chip__arrow {
+  opacity: 1;
+  color: var(--gold-400);
+}
+
+.stores__note {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-faint);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .how__steps {
+    grid-template-columns: 1fr;
+  }
+
+  .how__steps::before {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .store-chip {
+    padding: 0.625rem 1.125rem;
+  }
+
+  .store-chip__name {
+    font-size: 0.875rem;
+  }
+}

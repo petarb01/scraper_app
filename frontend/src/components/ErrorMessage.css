@@ -1,0 +1,25 @@
+.error-msg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.error-msg__icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.error-msg__text {
+  font-size: 0.9375rem;
+  max-width: 320px;
+}
+
+.error-msg__retry {
+  margin-top: 0.25rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+}

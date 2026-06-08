@@ -1,0 +1,16 @@
+# Log rotation for scrape pipeline logs
+# Install to: /etc/logrotate.d/scrape-pipeline
+
+/home/server/Documents/diplomski/web_scraper/logs/pipeline/run-*.log
+/home/server/Documents/diplomski/web_scraper/logs/scraper_run_*.log
+/home/server/Documents/diplomski/web_scraper/logs/pipeline_*.log
+{
+    weekly
+    rotate 8
+    compress
+    delaycompress
+    missingok
+    notifempty
+    # Do not create a new file — each run creates its own dated log
+    nocreat
+}

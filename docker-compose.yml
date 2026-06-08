@@ -1,0 +1,82 @@
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    container_name: price_scraper_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "127.0.0.1:5433:5432"  # loopback only — host scrapers connect via localhost:5433
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+      - ./database/add_indexes.sql:/docker-entrypoint-initdb.d/02_indexes.sql
+      - ./database/category_mappings.sql:/docker-entrypoint-initdb.d/03_category_mappings.sql
+      - ./database/possible_matches.sql:/docker-entrypoint-initdb.d/04_possible_matches.sql
+      - ./database/add_match_source.sql:/docker-entrypoint-initdb.d/05_add_match_source.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - price_scraper_network
+
+  # Flask Backend API
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: price_scraper_backend
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5000:5000"  # loopback only — nginx proxies to this
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db    # override — inside Docker Compose the DB hostname is "db"
+      DB_PORT: 5432  # override — inside Docker the DB is on 5432, not the host-mapped 5433
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - price_scraper_network
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+
+
+  # React Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: price_scraper_frontend
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:80"  # loopback only — nginx proxies to this
+    depends_on:
+      - backend
+    networks:
+      - price_scraper_network
+    deploy:
+      resources:
+        limits:
+          memory: 64m
+
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  price_scraper_network:
+    driver: bridge

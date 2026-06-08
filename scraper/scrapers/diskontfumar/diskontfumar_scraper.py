@@ -5,17 +5,20 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException
 from bs4 import BeautifulSoup
+from urllib.parse import urljoin
 import json
 import time
 import sys
+import os
 
 def diskontfumar_scraper(name):
+    base_url = "https://www.diskontfumar.hr/"
     try:
         options = Options()
         options.headless = True
         driver = webdriver.Firefox(options=options)
         print("[INFO] Navigating to the page...")
-        driver.get("https://www.diskontfumar.hr/" + name)
+        driver.get(base_url + name)
 
         time.sleep(2)
         # Handle age verification
@@ -62,12 +65,18 @@ def diskontfumar_scraper(name):
             if title_elem and price_elem:
                 title_text = title_elem.get_text(strip=True)
                 price_text = price_elem.get_text(strip=True)
-                link = link_elem["href"] if link_elem and "href" in link_elem.attrs else None
-                
+                link = urljoin(base_url, link_elem["href"]) if link_elem and "href" in link_elem.attrs else None
+                img_elem = item.select_one("img.picture-img")
+                img_url = None
+                if img_elem:
+                    src = img_elem.get("src", "")
+                    img_url = src if src.startswith("http") else img_elem.get("data-lazyloadsrc")
+
                 all_products.append({
                     "title": title_text,
                     "price": price_text,
-                    "link": link
+                    "link": link,
+                    "image": img_url
                 })
             else:
                 print(f"[WARN] Product {idx + 1}: Missing title or price.")
@@ -112,12 +121,18 @@ def diskontfumar_scraper(name):
                     if title_elem and price_elem:
                         title_text = title_elem.get_text(strip=True)
                         price_text = price_elem.get_text(strip=True)
-                        link = link_elem["href"] if link_elem and "href" in link_elem.attrs else None
+                        link = urljoin(base_url, link_elem["href"]) if link_elem and "href" in link_elem.attrs else None
+                        img_elem = item.select_one("img.picture-img")
+                        img_url = None
+                        if img_elem:
+                            src = img_elem.get("src", "")
+                            img_url = src if src.startswith("http") else img_elem.get("data-lazyloadsrc")
 
                         all_products.append({
                             "title": title_text,
                             "price": price_text,
-                            "link": link
+                            "link": link,
+                            "image": img_url
                         })
                     else:
                         print(f"[WARN] Product {idx + 1} on page {current_page}: Missing title or price.")
@@ -130,7 +145,33 @@ def diskontfumar_scraper(name):
         driver.quit()
         print("[INFO] Browser closed.")
 
-        output_path = "../../data/diskontfumar/" + name + "_diskontfumar.json"
+        # Sanitize the name to avoid directory creation from slashes
+        safe_name = name.replace("/", "-")
+
+        # Make path relative to this script file, not the current working directory
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        output_path = os.path.join(script_dir, "../../data/diskontfumar", safe_name + "_diskontfumar.json")
+        output_path = os.path.normpath(output_path)  # Clean up the path
+
+        # Create directory if it doesn't exist
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+        # Fill missing/placeholder images from the previous scrape (title → image lookup)
+        if os.path.exists(output_path):
+            try:
+                with open(output_path, encoding="utf-8") as f:
+                    prev = json.load(f)
+                prev_images = {p["title"]: p["image"] for p in prev if p.get("image") and p["image"].startswith("http")}
+                filled = 0
+                for p in all_products:
+                    if (not p.get("image") or not p["image"].startswith("http")) and p["title"] in prev_images:
+                        p["image"] = prev_images[p["title"]]
+                        filled += 1
+                if filled:
+                    print(f"[INFO] Filled {filled} missing images from previous scrape.")
+            except Exception as e:
+                print(f"[WARN] Could not load previous scrape for image fallback: {e}")
+
         print(f"[INFO] Saving {len(all_products)} products to {output_path}...")
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(all_products, f, ensure_ascii=False, indent=2)

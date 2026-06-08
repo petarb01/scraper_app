@@ -1,0 +1,11 @@
+# Cloudflare Tunnel config for cijenabar.net
+# Fill in TUNNEL_ID after running: cloudflared tunnel create price-scraper
+# The tunnel ID is the UUID printed by that command.
+
+tunnel: 4528d4ac-6774-4ad4-9252-cfd3c51173c8
+credentials-file: /etc/cloudflared/4528d4ac-6774-4ad4-9252-cfd3c51173c8.json
+
+ingress:
+  - hostname: cijenabar.net
+    service: http://localhost:80
+  - service: http_status:404

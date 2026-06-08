@@ -1,0 +1,46 @@
+# ── Secrets ──────────────────────────────────────────────────────────────────
+.env
+*.env.local
+
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# ── Node / Frontend ──────────────────────────────────────────────────────────
+node_modules/
+frontend/dist/
+frontend/.vite/
+*.tsbuildinfo
+
+# ── Logs ─────────────────────────────────────────────────────────────────────
+logs/
+*.log
+
+# ── Scraped data (generated, large, not source code) ─────────────────────────
+scraper/data/
+
+# ── Generated JSON output files ──────────────────────────────────────────────
+db_matched_products.json
+no_price_products.json
+unmatched_products.json
+
+# ── AI prompt / planning scratch files ───────────────────────────────────────
+claude_prompts/
+
+# ── OS ───────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── IDE ──────────────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,417 @@
+{% extends "admin/base.html" %}
+{% block title %}Review Queue{% endblock %}
+
+{% block head %}
+<style>
+  /* ── Card shell ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  /* ── Card header row ── */
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+  .card-id {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: .8rem;
+  }
+
+  /* ── Per-store product rows ── */
+  .store-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .store-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+  .store-table tr:last-child {
+    border-bottom: none;
+  }
+  .store-table td {
+    padding: 9px 6px;
+    vertical-align: top;
+  }
+  .col-check {
+    width: 28px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .col-check input[type=checkbox] {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    accent-color: var(--success);
+  }
+  .col-source {
+    width: 120px;
+    font-weight: 600;
+    font-size: .82rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .col-title {
+    font-size: .9rem;
+  }
+  .col-price {
+    width: 90px;
+    text-align: right;
+    font-weight: 700;
+    font-size: .9rem;
+    white-space: nowrap;
+  }
+  .col-link {
+    width: 36px;
+    text-align: center;
+  }
+  .col-link a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  .col-link a:hover { text-decoration: underline; }
+
+  /* dim unchecked store rows */
+  .store-row-unchecked td:not(.col-check) {
+    opacity: .38;
+  }
+
+  /* ── Notes + actions ── */
+  .notes-row {
+    margin-top: 18px;
+  }
+  .notes-row label {
+    display: block;
+    font-size: .82rem;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+  .notes-row textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px 10px;
+    font: inherit;
+    font-size: .9rem;
+    resize: vertical;
+    min-height: 56px;
+    color: var(--text);
+  }
+  .notes-row textarea:focus {
+    outline: 2px solid var(--primary);
+    border-color: transparent;
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 8px 22px;
+    border: none;
+    border-radius: var(--radius);
+    font: inherit;
+    font-size: .875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity .15s;
+  }
+  .btn:disabled { opacity: .45; cursor: not-allowed; }
+  .btn-confirm { background: var(--success); color: #fff; }
+  .btn-reject  { background: var(--danger);  color: #fff; }
+  .btn-skip    { background: var(--border);  color: var(--text); }
+  .btn:not(:disabled):hover { opacity: .88; }
+
+  .shortcuts {
+    margin-top: 10px;
+    font-size: .78rem;
+    color: var(--muted);
+  }
+  kbd {
+    background: #eee;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-family: monospace;
+    font-size: .8em;
+  }
+
+  /* ── Loading / empty states ── */
+  .state-msg {
+    text-align: center;
+    padding: 72px 0;
+    color: var(--muted);
+    font-size: 1.05rem;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>
+  Review Queue
+  <span id="counter" style="font-size:.88rem;color:var(--muted);font-weight:400;"></span>
+</h1>
+
+<div id="loading" class="state-msg">Loading queue…</div>
+<div id="card-wrapper"></div>
+<div id="empty"   class="state-msg" style="display:none;">
+  <p>All done — no pending candidates. 🎉</p>
+  <p style="margin-top:8px;font-size:.9rem;">
+    <a href="/admin/history" style="color:var(--primary);">View history →</a>
+  </p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+/* ================================================================
+   Review queue — vanilla JS
+   Fetches up to 50 pending candidates at once, then steps through
+   them card by card without further API calls.  When the local
+   batch is exhausted, a fresh fetch is made to pick up any new
+   items or to confirm the queue is empty.
+   ================================================================ */
+
+const PER_PAGE = 50;  // how many candidates to fetch in one request
+let queue = [];       // current batch
+let idx   = 0;        // index within queue
+
+// ── Fetch a new batch and start from index 0 ──────────────────
+async function loadQueue() {
+  setView('loading');
+  try {
+    const res  = await fetch(`/admin/api/queue?per_page=${PER_PAGE}`);
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error || 'API error');
+    queue = data.items || [];
+    idx   = 0;
+    updateCounter(data.total);
+    renderCurrent();
+  } catch (e) {
+    setView('loading');
+    document.getElementById('loading').textContent = 'Failed to load queue: ' + e.message;
+  }
+}
+
+// ── Update the "(N of M pending)" counter ────────────────────
+function updateCounter(total) {
+  const remaining = total - idx;
+  document.getElementById('counter').textContent =
+    remaining > 0 ? `(${remaining} pending)` : '(0 pending)';
+}
+
+// ── Render current card or show empty state ───────────────────
+function renderCurrent() {
+  if (idx >= queue.length) {
+    // Batch exhausted — reload to check for genuinely new items
+    loadQueue();
+    return;
+  }
+  setView('card');
+  document.getElementById('card-wrapper').innerHTML = buildCard(queue[idx]);
+}
+
+// ── Switch between the three view states ──────────────────────
+function setView(state) {
+  document.getElementById('loading').style.display      = state === 'loading' ? '' : 'none';
+  document.getElementById('card-wrapper').style.display = state === 'card'    ? '' : 'none';
+  document.getElementById('empty').style.display        = state === 'empty'   ? '' : 'none';
+}
+
+// ── Build a candidate card HTML string ────────────────────────
+function buildCard(item) {
+  // Header badges / scores
+  const srcClass = 'badge-' + (item.suggestion_source || '').replace(/_/g, '-');
+  const srcLabel = item.suggestion_source_label || item.suggestion_source;
+  const j = item.jaccard_score != null ? `<span class="score-pill">J=${fmt2(item.jaccard_score)}</span>` : '';
+  const t = item.trigram_score  != null ? `<span class="score-pill">T=${fmt2(item.trigram_score)}</span>`  : '';
+  const vol = item.volume_ml ? `${item.volume_ml} ml` : '';
+  const cat = item.category  || '';
+
+  // Store rows — each has a checkbox so the reviewer can exclude bad members
+  const storeRows = item.stores.map(s => {
+    const price = s.price > 0 ? `€${s.price.toFixed(2)}` : '—';
+    const link  = s.url
+      ? `<a href="${esc(s.url)}" target="_blank" rel="noopener" title="Open on ${esc(s.display_name)}">↗</a>`
+      : '';
+    return `
+      <tr class="store-row" id="storerow-${esc(s.source)}">
+        <td class="col-check">
+          <input type="checkbox" class="store-check"
+                 id="chk-${esc(s.source)}"
+                 data-source="${esc(s.source)}"
+                 checked
+                 onchange="onStoreToggle(this)">
+        </td>
+        <td class="col-source">${esc(s.display_name)}</td>
+        <td class="col-title">${esc(s.title || '—')}</td>
+        <td class="col-price">${price}</td>
+        <td class="col-link">${link}</td>
+      </tr>`;
+  }).join('');
+
+  return `
+    <div class="card" id="review-card">
+      <div class="card-header">
+        <span class="badge ${srcClass}">${esc(srcLabel)}</span>
+        ${cat  ? `<span style="font-size:.88rem;color:var(--muted);">${esc(cat)}</span>` : ''}
+        ${vol  ? `<span style="font-size:.88rem;color:var(--muted);">${esc(vol)}</span>` : ''}
+        ${j} ${t}
+        <span class="card-id">PM #${item.id}</span>
+      </div>
+
+      <table class="store-table">${storeRows}</table>
+      <p style="font-size:.78rem;color:var(--muted);margin:6px 0 0;">
+        Uncheck any store whose product does not belong in this match before confirming.
+      </p>
+
+      <div class="notes-row">
+        <label for="notes">Notes <span style="font-weight:400;">(optional — saved with decision)</span></label>
+        <textarea id="notes" placeholder="e.g. gift set — different SKU; reject"></textarea>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-confirm" id="btn-confirm" onclick="doAction(${item.id},'confirm')">✓ Confirm Match</button>
+        <button class="btn btn-reject"  onclick="doAction(${item.id},'reject')">✗ Reject</button>
+        <button class="btn btn-skip"    onclick="doAction(${item.id},'skip')">→ Skip</button>
+      </div>
+      <p class="shortcuts">
+        <kbd>Y</kbd> / <kbd>Enter</kbd> confirm &nbsp;
+        <kbd>N</kbd> reject &nbsp;
+        <kbd>S</kbd> / <kbd>→</kbd> skip
+      </p>
+    </div>`;
+}
+
+// ── Toggle dim class when a store checkbox changes ────────────
+function onStoreToggle(checkbox) {
+  const row = document.getElementById(`storerow-${checkbox.dataset.source}`);
+  if (row) row.classList.toggle('store-row-unchecked', !checkbox.checked);
+
+  // Disable confirm if fewer than 2 stores are checked
+  const checkedCount = document.querySelectorAll('.store-check:checked').length;
+  const btn = document.getElementById('btn-confirm');
+  if (btn) btn.disabled = checkedCount < 2;
+}
+
+// ── Collect which stores are checked ─────────────────────────
+function getCheckedStores() {
+  return [...document.querySelectorAll('.store-check:checked')]
+    .map(el => el.dataset.source);
+}
+
+// ── Submit a review action ────────────────────────────────────
+async function doAction(id, action) {
+  if (action === 'skip') {
+    idx++;
+    renderCurrent();
+    return;
+  }
+
+  const notes = (document.getElementById('notes')?.value || '').trim();
+
+  // For confirm: validate store selection before hitting the API
+  let confirmedStores = null;
+  if (action === 'confirm') {
+    confirmedStores = getCheckedStores();
+    if (confirmedStores.length < 2) {
+      showToast('Select at least 2 stores to confirm');
+      return;
+    }
+  }
+
+  setButtonsDisabled(true);
+
+  try {
+    const body = { action, notes };
+    if (confirmedStores) body.confirmed_stores = confirmedStores;
+
+    const res  = await fetch(`/admin/api/review/${id}`, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(body),
+    });
+    const data = await res.json();
+
+    if (!data.success) {
+      showToast('Error: ' + (data.error || 'unknown'));
+      setButtonsDisabled(false);
+      return;
+    }
+
+    if (action === 'confirm') {
+      const sup = data.superseded > 0 ? ` (${data.superseded} duplicate${data.superseded > 1 ? 's' : ''} auto-dismissed)` : '';
+      showToast(`Match confirmed ✓${sup}`);
+    } else {
+      showToast('Rejected ✗');
+    }
+
+    idx++;
+    // If the batch is nearly exhausted, reload to get fresh total count too
+    if (idx >= queue.length) {
+      loadQueue();
+    } else {
+      // Decrement counter display
+      const pending = queue.length - idx;
+      document.getElementById('counter').textContent =
+        pending > 0 ? `(${pending} pending)` : '(0 pending)';
+      renderCurrent();
+    }
+
+  } catch (e) {
+    showToast('Network error');
+    setButtonsDisabled(false);
+  }
+}
+
+// ── Utilities ────────────────────────────────────────────────
+function setButtonsDisabled(flag) {
+  document.querySelectorAll('.btn').forEach(b => b.disabled = flag);
+}
+
+function fmt2(n) {
+  return typeof n === 'number' ? n.toFixed(2) : n;
+}
+
+function esc(s) {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// ── Keyboard shortcuts ────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  // Do not fire shortcuts when the admin is typing in the notes textarea
+  if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') return;
+  if (!document.getElementById('review-card')) return;
+  const item = queue[idx];
+  if (!item) return;
+
+  if (e.key === 'y' || e.key === 'Y' || e.key === 'Enter') {
+    e.preventDefault();
+    doAction(item.id, 'confirm');
+  } else if (e.key === 'n' || e.key === 'N') {
+    doAction(item.id, 'reject');
+  } else if (e.key === 's' || e.key === 'S' || e.key === 'ArrowRight') {
+    doAction(item.id, 'skip');
+  }
+});
+
+// ── Boot ─────────────────────────────────────────────────────
+loadQueue();
+</script>
+{% endblock %}
